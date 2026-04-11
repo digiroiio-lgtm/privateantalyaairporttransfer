@@ -362,6 +362,145 @@
     </div>
   </div>
 
+  <!-- ======================== RIDE SEARCH ======================== -->
+  <section class="ride-search-section" id="ride-search" aria-labelledby="ride-search-heading">
+    <div class="container">
+      <div class="rs-panel" role="search" aria-label="Book your transfer">
+
+        <!-- Tab bar -->
+        <div class="rs-tabs" role="tablist">
+          <button class="rs-tab rs-tab--active" role="tab" aria-selected="true" id="tab-rides">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            Rides
+          </button>
+        </div>
+
+        <!-- Form grid -->
+        <div class="rs-form">
+
+          <!-- Row 1: Pickup / Drop-off -->
+          <div class="rs-row rs-row--locations">
+            <div class="rs-field rs-field--pickup">
+              <svg class="rs-field-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" fill="currentColor"/></svg>
+              <input
+                id="rs-pickup"
+                class="rs-input"
+                type="text"
+                placeholder="Please enter a pickup location"
+                autocomplete="off"
+                aria-label="Pickup location"
+              />
+            </div>
+            <div class="rs-field rs-field--dropoff">
+              <svg class="rs-field-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" fill="currentColor"/></svg>
+              <input
+                id="rs-dropoff"
+                class="rs-input"
+                type="text"
+                placeholder="Please enter a drop off location"
+                autocomplete="off"
+                aria-label="Drop-off location"
+              />
+            </div>
+          </div>
+
+          <!-- Row 2: Date/Time + Return + Passengers + Search -->
+          <div class="rs-row rs-row--controls">
+
+            <!-- Date/Time trigger -->
+            <button class="rs-field rs-field--datetime" id="rs-datetime-btn" aria-label="Select date and time" aria-haspopup="true" aria-expanded="false" type="button">
+              <svg class="rs-field-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span class="rs-datetime-date" id="rs-date-display">—</span>
+              <svg class="rs-field-icon rs-field-icon--time" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span class="rs-datetime-time" id="rs-time-display">Now</span>
+            </button>
+
+            <!-- Return toggle -->
+            <button class="rs-field rs-field--return" id="rs-return-btn" type="button" aria-pressed="false">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              RETURN
+            </button>
+
+            <!-- Passengers -->
+            <div class="rs-field rs-field--passengers" id="rs-pax-field">
+              <button class="rs-pax-btn" id="rs-pax-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span id="rs-pax-label">1 Passenger</span>
+                <svg class="rs-pax-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <!-- Passenger dropdown -->
+              <div class="rs-pax-dropdown" id="rs-pax-dropdown" role="dialog" aria-label="Select passengers" hidden>
+                <div class="rs-pax-row">
+                  <span class="rs-pax-row-label">Adults</span>
+                  <div class="rs-pax-counter">
+                    <button class="rs-pax-minus" data-type="adults" type="button" aria-label="Decrease adults">−</button>
+                    <span class="rs-pax-count" id="rs-adults-count">1</span>
+                    <button class="rs-pax-plus" data-type="adults" type="button" aria-label="Increase adults">+</button>
+                  </div>
+                </div>
+                <div class="rs-pax-row">
+                  <span class="rs-pax-row-label">Children <small>(2–11)</small></span>
+                  <div class="rs-pax-counter">
+                    <button class="rs-pax-minus" data-type="children" type="button" aria-label="Decrease children">−</button>
+                    <span class="rs-pax-count" id="rs-children-count">0</span>
+                    <button class="rs-pax-plus" data-type="children" type="button" aria-label="Increase children">+</button>
+                  </div>
+                </div>
+                <div class="rs-pax-row">
+                  <span class="rs-pax-row-label">Infants <small>(&lt;2)</small></span>
+                  <div class="rs-pax-counter">
+                    <button class="rs-pax-minus" data-type="infants" type="button" aria-label="Decrease infants">−</button>
+                    <span class="rs-pax-count" id="rs-infants-count">0</span>
+                    <button class="rs-pax-plus" data-type="infants" type="button" aria-label="Increase infants">+</button>
+                  </div>
+                </div>
+                <button class="rs-pax-done" id="rs-pax-done" type="button">Done</button>
+              </div>
+            </div>
+
+            <!-- Search -->
+            <button class="rs-search-btn" id="rs-search-btn" type="button" aria-label="Search for transfers" data-cta="ride-search">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </button>
+
+          </div><!-- /rs-row--controls -->
+
+        </div><!-- /rs-form -->
+
+        <!-- ---- CALENDAR POPUP ---- -->
+        <div class="rs-calendar-popup" id="rs-calendar-popup" role="dialog" aria-modal="true" aria-label="Select travel date" hidden>
+          <div class="rs-cal-header">
+            <button class="rs-cal-nav" id="rs-cal-prev" type="button" aria-label="Previous month">&#8249;</button>
+            <div class="rs-cal-months" id="rs-cal-months">
+              <!-- Injected by JS -->
+            </div>
+            <button class="rs-cal-nav" id="rs-cal-next" type="button" aria-label="Next month">&#8250;</button>
+          </div>
+
+          <!-- Time row inside calendar -->
+          <div class="rs-cal-time-row">
+            <label class="rs-cal-time-label" for="rs-time-input">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Departure time
+            </label>
+            <input class="rs-time-input" id="rs-time-input" type="time" value="00:00" aria-label="Departure time" />
+            <label class="rs-time-now-label">
+              <input type="checkbox" id="rs-time-now-chk" checked />
+              Now
+            </label>
+          </div>
+
+          <div class="rs-cal-actions">
+            <button class="rs-cal-cancel" id="rs-cal-cancel" type="button">Cancel</button>
+            <button class="rs-cal-confirm" id="rs-cal-confirm" type="button">Confirm date &amp; time</button>
+          </div>
+        </div><!-- /calendar popup -->
+
+      </div><!-- /rs-panel -->
+    </div>
+  </section>
+  <!-- ======================== END RIDE SEARCH ======================== -->
+
   <!-- ======================== DESTINATIONS ======================== -->
   <section class="destinations section-pad" id="destinations" aria-labelledby="destinations-heading">
     <div class="container">

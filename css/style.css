@@ -2538,7 +2538,675 @@ body {
   background-clip: text;
 }
 
+/* =====================================================
+   RIDE SEARCH SECTION
+   ===================================================== */
+
+.ride-search-section {
+  background: #1a1a1a;
+  padding: 0;
+  position: relative;
+  z-index: 10;
+}
+
+/* Panel wrapper */
+.rs-panel {
+  position: relative;
+  padding: 28px 28px 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ---- Tabs ---- */
+.rs-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.rs-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #3d7a3d;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.rs-tab:hover,
+.rs-tab--active {
+  background: #2e6b2e;
+}
+
+.rs-tab svg {
+  flex-shrink: 0;
+}
+
+/* ---- Form ---- */
+.rs-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ---- Rows ---- */
+.rs-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.rs-row--locations {
+  flex-wrap: nowrap;
+}
+
+.rs-row--controls {
+  align-items: stretch;
+}
+
+/* ---- Generic field ---- */
+.rs-field {
+  background: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+  height: 58px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  cursor: text;
+  font-family: var(--font-primary);
+  position: relative;
+}
+
+.rs-field:focus-within {
+  border-color: #3d7a3d;
+  box-shadow: 0 0 0 3px rgba(61,122,61,0.15);
+}
+
+/* Location fields */
+.rs-field--pickup,
+.rs-field--dropoff {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* ---- Field icon ---- */
+.rs-field-icon {
+  color: #c0392b;
+  flex-shrink: 0;
+}
+
+.rs-field-icon--time {
+  color: #555;
+  margin-left: 8px;
+}
+
+/* ---- Text input ---- */
+.rs-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #c0392b;
+  width: 100%;
+  cursor: text;
+}
+
+.rs-input::placeholder {
+  color: #c0392b;
+  font-weight: 500;
+}
+
+.rs-input:focus {
+  color: #222;
+}
+
+.rs-input:not(:placeholder-shown) {
+  color: #222;
+}
+
+/* ---- Date/time field ---- */
+.rs-field--datetime {
+  flex: 1;
+  min-width: 220px;
+  cursor: pointer;
+  background: #fff;
+  border: 2px solid #e0e0e0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #222;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.rs-field--datetime:hover {
+  border-color: #3d7a3d;
+}
+
+.rs-datetime-date {
+  font-weight: 600;
+  color: #222;
+  min-width: 90px;
+}
+
+.rs-datetime-time {
+  font-weight: 600;
+  color: #444;
+}
+
+/* ---- Return button ---- */
+.rs-field--return {
+  min-width: 140px;
+  background: #ebebeb;
+  border: 2px solid #d0d0d0;
+  color: #333;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  justify-content: center;
+  gap: 6px;
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+
+.rs-field--return:hover,
+.rs-field--return[aria-pressed="true"] {
+  background: #3d7a3d;
+  border-color: #3d7a3d;
+  color: #fff;
+}
+
+.rs-field--return[aria-pressed="true"] svg {
+  transform: rotate(45deg);
+}
+
+/* ---- Passengers field ---- */
+.rs-field--passengers {
+  min-width: 180px;
+  flex-shrink: 0;
+  cursor: pointer;
+  padding: 0;
+  border: 2px solid #333;
+  background: transparent;
+  position: relative;
+}
+
+.rs-pax-btn {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.rs-pax-btn svg {
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.rs-pax-chevron {
+  margin-left: auto;
+  transition: transform 0.2s ease;
+}
+
+.rs-pax-btn[aria-expanded="true"] .rs-pax-chevron {
+  transform: rotate(180deg);
+}
+
+/* ---- Passenger dropdown ---- */
+.rs-pax-dropdown {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 0;
+  width: 240px;
+  background: #222;
+  border: 1px solid #444;
+  border-radius: 12px;
+  padding: 16px;
+  z-index: 200;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.rs-pax-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #333;
+}
+
+.rs-pax-row:last-of-type {
+  border-bottom: none;
+}
+
+.rs-pax-row-label {
+  color: #ccc;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.rs-pax-row-label small {
+  color: #888;
+  font-size: 0.75rem;
+}
+
+.rs-pax-counter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rs-pax-minus,
+.rs-pax-plus {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #555;
+  background: #333;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition);
+}
+
+.rs-pax-minus:hover,
+.rs-pax-plus:hover {
+  background: #3d7a3d;
+  border-color: #3d7a3d;
+}
+
+.rs-pax-minus:disabled,
+.rs-pax-plus:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.rs-pax-count {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  min-width: 20px;
+  text-align: center;
+}
+
+.rs-pax-done {
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px;
+  background: #3d7a3d;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.rs-pax-done:hover {
+  background: #2e6b2e;
+}
+
+/* ---- Search button ---- */
+.rs-search-btn {
+  width: 68px;
+  min-width: 68px;
+  height: 58px;
+  background: #3d7a3d;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 4px 16px rgba(61,122,61,0.4);
+}
+
+.rs-search-btn:hover {
+  background: #2e6b2e;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(61,122,61,0.5);
+}
+
+.rs-search-btn:active {
+  transform: translateY(0);
+}
+
+/* =====================================================
+   CALENDAR POPUP
+   ===================================================== */
+
+.rs-calendar-popup {
+  position: absolute;
+  top: calc(100% - 8px);
+  left: 28px;
+  right: 28px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.22);
+  z-index: 300;
+  padding: 24px 20px 16px;
+  animation: calSlideDown 0.2s ease;
+}
+
+@keyframes calSlideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Header row (prev / months / next) */
+.rs-cal-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.rs-cal-nav {
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 4px;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.rs-cal-nav:hover {
+  background: #f0f0f0;
+  border-color: #aaa;
+}
+
+/* Two-month grid */
+.rs-cal-months {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Single month */
+.rs-cal-month {
+  min-width: 0;
+}
+
+.rs-cal-month-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: #111;
+}
+
+.rs-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.rs-cal-dow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-align: center;
+  color: #888;
+  padding-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.rs-cal-day {
+  position: relative;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #222;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.rs-cal-day:hover:not(.rs-cal-day--disabled):not(.rs-cal-day--empty) {
+  background: #e8f4e8;
+  color: #2e6b2e;
+}
+
+.rs-cal-day--selected {
+  background: #3d7a3d !important;
+  color: #fff !important;
+  font-weight: 800;
+}
+
+.rs-cal-day--today {
+  border: 2px solid #3d7a3d;
+  color: #3d7a3d;
+}
+
+.rs-cal-day--today.rs-cal-day--selected {
+  border-color: #3d7a3d;
+}
+
+.rs-cal-day--disabled,
+.rs-cal-day--past {
+  color: #ccc !important;
+  cursor: default;
+  background: none !important;
+}
+
+.rs-cal-day--empty {
+  cursor: default;
+}
+
+/* ---- Time row ---- */
+.rs-cal-time-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0 10px;
+  border-top: 1px solid #eee;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.rs-cal-time-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.rs-time-input {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #222;
+  outline: none;
+  transition: border-color var(--transition);
+  background: #f8f8f8;
+}
+
+.rs-time-input:focus {
+  border-color: #3d7a3d;
+}
+
+.rs-time-now-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #444;
+  cursor: pointer;
+  user-select: none;
+}
+
+.rs-time-now-label input[type="checkbox"] {
+  accent-color: #3d7a3d;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* ---- Calendar actions ---- */
+.rs-cal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+  margin-top: 8px;
+}
+
+.rs-cal-cancel {
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 9px 20px;
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.rs-cal-cancel:hover {
+  border-color: #aaa;
+  color: #222;
+}
+
+.rs-cal-confirm {
+  background: #3d7a3d;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 20px;
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: background var(--transition);
+  box-shadow: 0 2px 8px rgba(61,122,61,0.3);
+}
+
+.rs-cal-confirm:hover {
+  background: #2e6b2e;
+}
+
+/* =====================================================
+   RESPONSIVE — RIDE SEARCH
+   ===================================================== */
+
+@media (max-width: 767px) {
+  .rs-panel {
+    padding: 20px 16px 16px;
+  }
+
+  .rs-row--locations {
+    flex-wrap: wrap;
+  }
+
+  .rs-field--pickup,
+  .rs-field--dropoff {
+    min-width: 100%;
+  }
+
+  .rs-field--return {
+    min-width: 100px;
+  }
+
+  .rs-field--passengers {
+    flex: 1;
+    min-width: 140px;
+  }
+
+  .rs-cal-months {
+    grid-template-columns: 1fr;
+  }
+
+  .rs-cal-months .rs-cal-month:last-child {
+    display: none;
+  }
+
+  .rs-calendar-popup {
+    left: 0;
+    right: 0;
+    border-radius: 0 0 14px 14px;
+  }
+}
+
+@media (max-width: 479px) {
+  .rs-row--controls {
+    flex-wrap: wrap;
+  }
+
+  .rs-field--datetime {
+    min-width: 100%;
+  }
+
+  .rs-field--return {
+    flex: 1;
+  }
+
+  .rs-search-btn {
+    flex: 1;
+    width: auto;
+    min-width: auto;
+  }
+}
+
 /* === PRINT === */
 @media print {
   .whatsapp-float { display: none; }
+  .ride-search-section { display: none; }
 }
