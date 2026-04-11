@@ -32,7 +32,7 @@
   <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 
   <!-- FONTS -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <!-- STYLESHEET -->
   <link rel="stylesheet" href="css/style.css" />
@@ -267,6 +267,47 @@
           </a>
         </div>
 
+        <!-- BOOKING WIDGET -->
+        <div class="hero-booking-widget" role="form" aria-label="Quick transfer booking">
+          <div class="hero-widget-field">
+            <span class="hero-widget-label">✈️ Flying from</span>
+            <div class="hero-widget-from">🛬 Antalya Airport (AYT)</div>
+          </div>
+          <div class="hero-widget-row">
+            <div class="hero-widget-field">
+              <span class="hero-widget-label">📍 Transfer to</span>
+              <select class="hero-widget-select" aria-label="Select destination">
+                <option value="">Choose destination…</option>
+                <option value="belek">Belek — from €45</option>
+                <option value="side">Side — from €55</option>
+                <option value="alanya">Alanya — from €75</option>
+                <option value="kemer">Kemer — from €50</option>
+                <option value="lara">Lara Beach — from €35</option>
+              </select>
+            </div>
+            <div class="hero-widget-field">
+              <span class="hero-widget-label">👥 Passengers</span>
+              <select class="hero-widget-select" aria-label="Number of passengers">
+                <option value="1">1 passenger</option>
+                <option value="2">2 passengers</option>
+                <option value="3">3 passengers</option>
+                <option value="4" selected>4 passengers</option>
+                <option value="5">5 passengers</option>
+                <option value="6">6 passengers</option>
+                <option value="7">7+ passengers</option>
+              </select>
+            </div>
+          </div>
+          <a href="#booking" class="hero-widget-btn" data-cta="hero-widget">
+            🔎 Check Prices &amp; Book
+          </a>
+        </div>
+
+        <div class="hero-live-proof">
+          <span class="live-dot"></span>
+          <span>1,247 transfers completed this month · 24/7 availability</span>
+        </div>
+
         <div class="hero-stats">
           <div class="hero-stat">
             <div class="hero-stat-number">4.9★</div>
@@ -289,33 +330,37 @@
   <section class="trust-bar" aria-label="Trust signals">
     <div class="container">
       <ul class="trust-items" role="list">
-        <li class="trust-item">
-          <span class="trust-item-icon" aria-hidden="true">🕐</span>
-          <span>24/7 Service</span>
-        </li>
-        <li class="trust-item">
-          <span class="trust-item-icon" aria-hidden="true">✈️</span>
-          <span>Flight Tracking</span>
-        </li>
-        <li class="trust-item">
-          <span class="trust-item-icon" aria-hidden="true">💰</span>
-          <span>Fixed Price Guarantee</span>
-        </li>
-        <li class="trust-item">
-          <span class="trust-item-icon" aria-hidden="true">✅</span>
-          <span>No Hidden Fees</span>
-        </li>
-        <li class="trust-item">
-          <span class="trust-item-icon" aria-hidden="true">🗣️</span>
-          <span>English Speaking Drivers</span>
-        </li>
-        <li class="trust-item">
-          <span class="trust-item-icon" aria-hidden="true">🔄</span>
-          <span>Free Cancellation</span>
-        </li>
+        <li class="trust-item"><span class="trust-item-icon" aria-hidden="true">🕐</span><span>24/7 Service</span></li>
+        <li class="trust-item"><span class="trust-item-icon" aria-hidden="true">✈️</span><span>Flight Tracking</span></li>
+        <li class="trust-item"><span class="trust-item-icon" aria-hidden="true">💰</span><span>Fixed Price Guarantee</span></li>
+        <li class="trust-item"><span class="trust-item-icon" aria-hidden="true">✅</span><span>No Hidden Fees</span></li>
+        <li class="trust-item"><span class="trust-item-icon" aria-hidden="true">🗣️</span><span>English Speaking Drivers</span></li>
+        <li class="trust-item"><span class="trust-item-icon" aria-hidden="true">🔄</span><span>Free Cancellation</span></li>
+        <!-- Duplicate set for seamless scroll loop -->
+        <li class="trust-item" aria-hidden="true"><span class="trust-item-icon">🕐</span><span>24/7 Service</span></li>
+        <li class="trust-item" aria-hidden="true"><span class="trust-item-icon">✈️</span><span>Flight Tracking</span></li>
+        <li class="trust-item" aria-hidden="true"><span class="trust-item-icon">💰</span><span>Fixed Price Guarantee</span></li>
+        <li class="trust-item" aria-hidden="true"><span class="trust-item-icon">✅</span><span>No Hidden Fees</span></li>
+        <li class="trust-item" aria-hidden="true"><span class="trust-item-icon">🗣️</span><span>English Speaking Drivers</span></li>
+        <li class="trust-item" aria-hidden="true"><span class="trust-item-icon">🔄</span><span>Free Cancellation</span></li>
       </ul>
     </div>
   </section>
+
+  <!-- ======================== PAYMENT BAR ======================== -->
+  <div class="payment-bar" aria-label="Accepted payment methods">
+    <div class="container">
+      <div class="payment-bar-inner">
+        <span class="payment-bar-label">Secure Payment</span>
+        <span class="payment-pill"><span class="payment-pill-icon cc-visa">💳</span> Visa</span>
+        <span class="payment-pill"><span class="payment-pill-icon cc-mc">💳</span> Mastercard</span>
+        <span class="payment-pill"><span class="payment-pill-icon cc-amex">💳</span> Amex</span>
+        <span class="payment-pill"><span class="payment-pill-icon cc-paypal">🅿️</span> PayPal</span>
+        <span class="payment-pill"><span class="payment-pill-icon cc-stripe">⚡</span> Stripe</span>
+        <span class="payment-pill"><span class="payment-pill-icon cc-secure">🔒</span> SSL Secured</span>
+      </div>
+    </div>
+  </div>
 
   <!-- ======================== DESTINATIONS ======================== -->
   <section class="destinations section-pad" id="destinations" aria-labelledby="destinations-heading">
@@ -331,6 +376,10 @@
 
         <!-- Belek -->
         <article class="route-card" aria-label="Transfer to Belek">
+          <div class="route-card-visual route-visual-belek" aria-hidden="true">
+            <span class="route-card-visual-emoji">⛳</span>
+            <span class="route-card-visual-name">Belek</span>
+          </div>
           <div class="route-header">
             <div class="route-from-to">
               <div class="route-from">Antalya Airport (AYT)</div>
@@ -361,6 +410,10 @@
 
         <!-- Side -->
         <article class="route-card" aria-label="Transfer to Side">
+          <div class="route-card-visual route-visual-side" aria-hidden="true">
+            <span class="route-card-visual-emoji">🏛️</span>
+            <span class="route-card-visual-name">Side</span>
+          </div>
           <div class="route-header">
             <div class="route-from-to">
               <div class="route-from">Antalya Airport (AYT)</div>
@@ -391,6 +444,10 @@
 
         <!-- Alanya -->
         <article class="route-card" aria-label="Transfer to Alanya">
+          <div class="route-card-visual route-visual-alanya" aria-hidden="true">
+            <span class="route-card-visual-emoji">🏰</span>
+            <span class="route-card-visual-name">Alanya</span>
+          </div>
           <div class="route-header">
             <div class="route-from-to">
               <div class="route-from">Antalya Airport (AYT)</div>
@@ -421,6 +478,10 @@
 
         <!-- Kemer -->
         <article class="route-card" aria-label="Transfer to Kemer">
+          <div class="route-card-visual route-visual-kemer" aria-hidden="true">
+            <span class="route-card-visual-emoji">🏔️</span>
+            <span class="route-card-visual-name">Kemer</span>
+          </div>
           <div class="route-header">
             <div class="route-from-to">
               <div class="route-from">Antalya Airport (AYT)</div>
@@ -451,6 +512,10 @@
 
         <!-- Lara Beach -->
         <article class="route-card" aria-label="Transfer to Lara Beach">
+          <div class="route-card-visual route-visual-lara" aria-hidden="true">
+            <span class="route-card-visual-emoji">🏖️</span>
+            <span class="route-card-visual-name">Lara Beach</span>
+          </div>
           <div class="route-header">
             <div class="route-from-to">
               <div class="route-from">Antalya Airport (AYT)</div>
@@ -1060,6 +1125,12 @@
             <a href="mailto:info@privateantalyaairporttransfer.com">✉️ info@privateantalyaairporttransfer.com</a>
             <a href="https://wa.me/902420000000">💬 WhatsApp Support</a>
           </div>
+          <div class="footer-social" aria-label="Social media links">
+            <a href="https://www.facebook.com/privateantalyaairporttransfer" class="footer-social-link" aria-label="Facebook" rel="noopener noreferrer" target="_blank">📘</a>
+            <a href="https://www.instagram.com/antalyatransfer" class="footer-social-link" aria-label="Instagram" rel="noopener noreferrer" target="_blank">📸</a>
+            <a href="https://wa.me/902420000000" class="footer-social-link" aria-label="WhatsApp" rel="noopener noreferrer" target="_blank">💬</a>
+            <a href="https://twitter.com/antalyatransfer" class="footer-social-link" aria-label="Twitter/X" rel="noopener noreferrer" target="_blank">🐦</a>
+          </div>
         </div>
 
         <div>
@@ -1106,6 +1177,16 @@
       </div>
     </div>
   </footer>
+
+  <!-- ======================== WHATSAPP FLOAT ======================== -->
+  <a href="https://wa.me/902420000000?text=Hello%2C%20I%20would%20like%20to%20book%20an%20Antalya%20airport%20transfer."
+     class="whatsapp-float"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Contact us on WhatsApp">
+    <div class="whatsapp-btn" aria-hidden="true">💬</div>
+    <span class="whatsapp-label">WhatsApp</span>
+  </a>
 
   <!-- ======================== STICKY BOOKING BAR ======================== -->
   <div class="sticky-bar" role="complementary" aria-label="Sticky booking bar">
