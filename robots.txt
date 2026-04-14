@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.privateantalyaairporttransfer.com/sitemap.xml
+
+# Disallow admin or private paths (none currently)
